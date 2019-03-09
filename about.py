@@ -33,7 +33,7 @@ class Ui_About(object):
     def retranslateUi(self, About):
         _translate = QtCore.QCoreApplication.translate
         About.setWindowTitle(_translate("About", "About"))
-        self.label_2.setText(_translate("About", "Usage Stats\\Recent Task Parser\n\nVersion 1.0"
+        self.label_2.setText(_translate("About", "Usage Stats\\Recent Task Parser\n"
 "\n"
 "\n"
 "Created By:\n"
@@ -43,7 +43,7 @@ class Ui_About(object):
 "\n"
 "@AlexisBrignoni\n"
 "abrignoni.com\n"
-"4n6@abrignoni.com\n"
+"4n6@abrignono.com\n"
 "\n"
 "\n"
 "Chris Weber\n"
@@ -60,3 +60,4 @@ if __name__ == "__main__":
     ui.setupUi(About)
     About.show()
     sys.exit(app.exec_())
+
