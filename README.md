@@ -9,5 +9,5 @@ Scripts usage:
 * Run UsRT.py
 
 Binary usage:
-* Go to version tab and download.
+* Go to release tab in the repository and download.
 * Execute the binary. Installer only compatible with Windows systems.
