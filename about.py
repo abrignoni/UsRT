@@ -43,7 +43,7 @@ class Ui_About(object):
 "\n"
 "@AlexisBrignoni\n"
 "abrignoni.com\n"
-"4n6@abrignoni.com\n"
+"4n6@abrignono.com\n"
 "\n"
 "\n"
 "Chris Weber\n"

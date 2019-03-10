@@ -11,16 +11,16 @@ class parsefile(object):
         if 'version' in self.filename:
             return None
         else:
+            if 'daily' in self.filename:
+                sourced = 'daily'
+            elif 'weekly' in self.filename:
+                sourced = 'weekly'
+            elif 'monthly' in self.filename:
+                sourced = 'monthly'
+            elif 'yearly' in self.filename:
+                sourced = 'yearly'
+            file_name_int = int(self.filename.split("\\")[-1])
             try:
-                if 'daily' in self.filename:
-                    sourced = 'daily'
-                elif 'weekly' in self.filename:
-                    sourced = 'weekly'
-                elif 'monthly' in self.filename:
-                    sourced = 'monthly'
-                elif 'yearly' in self.filename:
-                    sourced = 'yearly'
-                file_name_int = int(self.filename.split("\\")[-1])
                 tree = ET.parse(self.filename)
                 root = tree.getroot()
                 for elem in root:
@@ -33,8 +33,8 @@ class parsefile(object):
                                 finalt = abs(time1)
                             else:
                                 finalt = file_name_int + time1
-                                pkg = (subelem.attrib['package'])
-                                tac = (subelem.attrib['timeActive'])
+                            pkg = (subelem.attrib['package'])
+                            tac = (subelem.attrib['timeActive'])
                             datainsert = (usagetype, finalt, tac, pkg, '' , '' , sourced, fullatti_str,)
                             self.db.cursor().execute('INSERT INTO data (usage_type, lastime, timeactive, package, types, classs, source, fullatt)  VALUES(?,?,?,?,?,?,?,?)', datainsert)
                             self.db.commit()
@@ -62,12 +62,12 @@ class parsefile(object):
                             fullatti_str = json.dumps(subelem.attrib)
                             if 'class' in subelem.attrib:
                                 classy = subelem.attrib['class']
-                                datainsert = (usagetype, finalt, '' , pkg , tipes , classy , sourced, fullatti_str,)
-                                self.db.cursor().execute('INSERT INTO data (usage_type, lastime, timeactive, package, types, classs, source, fullatt)  VALUES(?,?,?,?,?,?,?,?)', datainsert)
-                                self.db.commit()
-                            else:
-                                datainsert = (usagetype, finalt, '' , pkg , tipes , '' , sourced, fullatti_str,)
-                                self.db.cursor().execute('INSERT INTO data (usage_type, lastime, timeactive, package, types, classs, source, fullatt)  VALUES(?,?,?,?,?,?,?,?)', datainsert)
-                                self.db.commit()
+                            datainsert = (usagetype, finalt, '' , pkg , tipes , classy , sourced, fullatti_str,)
+                            self.db.cursor().execute('INSERT INTO data (usage_type, lastime, timeactive, package, types, classs, source, fullatt)  VALUES(?,?,?,?,?,?,?,?)', datainsert)
+                            self.db.commit()
+                    else:
+                        datainsert = (usagetype, finalt, '' , pkg , tipes , '' , sourced, fullatti_str,)
+                        self.db.cursor().execute('INSERT INTO data (usage_type, lastime, timeactive, package, types, classs, source, fullatt)  VALUES(?,?,?,?,?,?,?,?)', datainsert)
+                        self.db.commit()
 
             except: pass
