@@ -12,7 +12,7 @@ Binary usage:
 * Go to release tab in the repository and download.
 * Execute the binary. Installer only compatible with Windows systems.
 
-If the graphical mode does not work on your dataset try the non-graphical scripts located here:  
+If the graphical mode does not work on your datasets try the non-graphical scripts located here:  
 * Usagestats:  
 https://github.com/abrignoni/Android-Usagestats-XML-Parser  
 * Recent Tasks:  
